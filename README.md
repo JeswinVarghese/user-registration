@@ -20,28 +20,39 @@ This is a Spring Boot application for user registration with authentication and 
 
 - Docker
 
-On application startup, an admin user is created, This admin account can be used to access all users and delete users. <br>
-#### Credentials of admin : <br>
-Email: admin@example.com <br>
-Password: admin123 <br>
-
-
-
 ### Steps to Run
 
-1. Build the application JAR file:
+1. Clone the Repository:
+
+   ```sh
+   git clone <repository-url>
+   ```
+   
+2. Build the application JAR file:
 
    ```sh
    mvn clean package
 
-2. Build the Docker image:
+3. Build the Docker image:
 
    ```sh
    docker build -t user-registration-app .
 
-3. Run the Docker container:
+4. Run the Docker container:
    ```sh
    docker run -p 8080:8080 user-registration-app
+   ```
+4. Access the Application: <br>
+   <br>
+   Swagger UI end-point : 
+     ```sh
+     http://localhost:8080/swagger-ui.html
+     ```
+   Admin Credentials :
+    ```sh
+     Email: admin@example.com 
+     Password: admin123
+     ```
 
 ### API Documentation
 

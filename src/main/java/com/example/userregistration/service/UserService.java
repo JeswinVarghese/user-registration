@@ -1,13 +1,13 @@
 package com.example.userregistration.service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.userregistration.exception.UserAlreadyExistsException;
+import com.example.userregistration.exception.UserNotFoundException;
 import com.example.userregistration.model.User;
 import com.example.userregistration.model.UserRegistrationRequestDto;
 import com.example.userregistration.model.UserRegistrationResponseDto;
@@ -68,10 +68,12 @@ public class UserService {
 	}
 	
 	@Transactional
-	public void deleteUser(String email) {
+	public String deleteUser(String email) {
         if (!userRepository.existsByEmail(email)) {
-            throw new RuntimeException("User not found");
+            throw new UserNotFoundException("User with email " + email + " not found");
         }
         userRepository.deleteByEmail(email);
+        return "User with email " + email + " has been successfully deleted.";
+
     }
 }
